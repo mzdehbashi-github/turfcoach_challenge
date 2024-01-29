@@ -31,21 +31,21 @@ This command will import the forcasting data of Berlin for the specified period,
 so you can have all days in a row (future, which has been retrieved previously and also the data of the past accordingly)
 `docker-compose run backendserver python manage.py update_weather_forecast_history Berlin 2024-01-18 2024-01-29`
 
-
 ### Then you can use admin dashboard in order to create new Pitch records
-Note: To prevent issues, Please be careful to use the same characters as they exist in the table WeatherForecast 
+Note: To prevent issues, Please be careful to use the same characters as they exist in the table WeatherForecast
 
-### Updating current condition of a pitch
-This command will update the current condition for the given pitch (with ID equals to 1)
-`docker-compose run backendserver python manage.py update_current_condition 1`
 
 ### Find the next maintenance day
 This command will find the next maintenance day for the given pitch (with ID equals to 1)
 `docker-compose run backendserver python manage.py find_next_maintenance_date 1`
 
+### Updating current condition of a pitch
+This command will update the current condition for the given pitch (with ID equals to 1)
+(Note: The related pitch should have a valid value on field `last_maintenance_date` which is probably in the past)
+`docker-compose run backendserver python manage.py update_current_condition 1`
+
 ### Finally to remove services (and related volumes)
 `docker-compose down -v`
-
 
 #### You can also visit API-docs on http://localhost:8000/swagger to explore the endpoints
 
